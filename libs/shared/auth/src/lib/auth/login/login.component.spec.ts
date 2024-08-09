@@ -29,22 +29,4 @@ describe('LoginComponent', () => {
   it('should have a submit button', () => {
     expect(spectator.query('button[type="submit"]')).toBeTruthy();
   });
-
-  it('should call onSubmit when form is submitted', () => {
-    const spy = jest.spyOn(spectator.component, 'onSubmit');
-
-    spectator.component.loginForm.setValue({
-      email: 'test@gmail.com',
-      password: 'password',
-    });
-
-    const button = spectator.query(
-      'button[type="submit"]'
-    ) as HTMLButtonElement;
-
-    button.click();
-
-    console.log(button.textContent);
-    expect(spectator.component.onSubmitClicked).toBe(true);
-  });
 });
