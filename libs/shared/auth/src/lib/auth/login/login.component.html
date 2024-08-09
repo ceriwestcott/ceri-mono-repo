@@ -1,0 +1,66 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">
+    <h2 class="mb-6 text-2xl font-bold text-center text-gray-700">Login</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-600"
+          >Email</label
+        >
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter your email"
+        />
+        <div
+          *ngIf="
+            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+          "
+          class="mt-2 text-sm text-red-600"
+        >
+          <span *ngIf="loginForm.get('email')?.errors?.['required']"
+            >Email is required.</span
+          >
+          <span *ngIf="loginForm.get('email')?.errors?.['email']"
+            >Enter a valid email.</span
+          >
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <label
+          for="password"
+          class="block mb-2 text-sm font-medium text-gray-600"
+          >Password</label
+        >
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter your password"
+        />
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+          class="mt-2 text-sm text-red-600"
+        >
+          <span>Password is required.</span>
+        </div>
+      </div>
+
+      <button
+        data-role="login-button"
+        type="submit"
+        [disabled]="loginForm.invalid"
+        class="w-full px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>

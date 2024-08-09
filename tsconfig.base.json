@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ceri-web-app/auth": ["libs/shared/auth/src/index.ts"],
+      "@ceri-web-app/models": ["libs/shared/models/src/index.ts"],
+      "@ceri-web-app/shared-ui": ["libs/shared/ui/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
