@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "npx nx serve ceri-web-app"
+    "start": "npx nx serve ceri-web-app",
+    "mock-server": "node ./scripts/mock-server.js"
   },
   "private": true,
   "dependencies": {
@@ -15,7 +16,10 @@
     "@angular/platform-browser": "~18.1.0",
     "@angular/platform-browser-dynamic": "~18.1.0",
     "@angular/router": "~18.1.0",
+    "@auth0/angular-jwt": "^5.2.0",
     "@nx/angular": "19.5.7",
+    "connect": "^3.7.0",
+    "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -30,6 +34,8 @@
     "@angular/cli": "~18.1.0",
     "@angular/compiler-cli": "~18.1.0",
     "@angular/language-service": "~18.1.0",
+    "@ng-apimock/core": "^3.12.0",
+    "@ng-apimock/dev-interface": "^3.5.1",
     "@ngneat/spectator": "^19.0.0",
     "@nx/devkit": "19.5.7",
     "@nx/eslint": "19.5.7",

@@ -8,6 +8,9 @@ describe('LoginComponent', () => {
     imports: [ReactiveFormsModule],
   });
 
+  const getButton = () =>
+    spectator.query<HTMLButtonElement>('button[type="submit"]');
+
   beforeEach(() => (spectator = createComponent()));
 
   it('should create', () => {
@@ -28,5 +31,35 @@ describe('LoginComponent', () => {
 
   it('should have a submit button', () => {
     expect(spectator.query('button[type="submit"]')).toBeTruthy();
+  });
+
+  it('should disable the submit button if data is invalid', () => {
+    const button = spectator.query(
+      '[data-role="login-button"]'
+    ) as HTMLButtonElement;
+
+    spectator.component.loginForm.patchValue({
+      email: 'test@.com',
+      password: 'password',
+    });
+
+    spectator.component.loginForm.markAllAsTouched();
+    spectator.detectChanges();
+
+    expect(button.disabled).toBe(true);
+  });
+
+  it('should enable the submit button if data is valid', () => {
+    const button = getButton();
+
+    spectator.component.loginForm.patchValue({
+      email: 'test@gmail.com',
+      password: 'password',
+    });
+
+    spectator.component.loginForm.markAllAsTouched();
+    spectator.detectChanges();
+
+    expect(button?.disabled).toBe(false);
   });
 });

@@ -1,24 +1,26 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-  <div class="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">
-    <h2 class="mb-6 text-2xl font-bold text-center text-gray-700">Login</h2>
+<div class="flex items-center justify-center min-h-screen">
+  <div class="w-full max-w-sm p-6 rounded-lg shadow-md">
+    <h2 class="mb-6 text-2xl font-bold text-center text-gray-300 uppercase">
+      Login
+    </h2>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="mb-4">
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-600"
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-200"
           >Email</label
         >
         <input
           type="email"
           id="email"
           formControlName="email"
-          class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-200"
           placeholder="Enter your email"
         />
         <div
           *ngIf="
             loginForm.get('email')?.invalid && loginForm.get('email')?.touched
           "
-          class="mt-2 text-sm text-red-600"
+          class="mt-2 text-sm text-red-600 font-bold"
         >
           <span *ngIf="loginForm.get('email')?.errors?.['required']"
             >Email is required.</span
@@ -32,14 +34,14 @@
       <div class="mb-6">
         <label
           for="password"
-          class="block mb-2 text-sm font-medium text-gray-600"
+          class="block mb-2 text-sm font-medium text-gray-200"
           >Password</label
         >
         <input
           type="password"
           id="password"
           formControlName="password"
-          class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 bg-gray-200 focus:ring-blue-500"
           placeholder="Enter your password"
         />
         <div
@@ -56,8 +58,8 @@
       <button
         data-role="login-button"
         type="submit"
-        [disabled]="loginForm.invalid"
-        class="w-full px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        [disabled]="loginForm.invalid || loginForm.untouched"
+        class="btn w-full px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 disabled:bg-blue-400 disabled:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
       >
         Login
       </button>
