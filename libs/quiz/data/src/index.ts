@@ -1,1 +1,1 @@
-export * from './lib/quiz-data/quiz-data.component';
+export { TriviaService } from './trivia-api.service';

@@ -1,3 +1,64 @@
 <button class="btn btn-primary text-white" routerLink="setup">
   Start Quiz
 </button>
+
+<button class="btn btn-primary text-white" (click)="getQuestions()">
+  Get Quiz
+</button>
+<div class="max-w-4xl mx-auto p-4">
+  <h1 class="text-3xl font-bold mb-6 text-center">Quiz</h1>
+
+  <ng-container *ngIf="quiz | async as questions">
+    <div class="space-y-6">
+      <div
+        *ngFor="let question of questions; let i = index"
+        class="bg-white shadow-md rounded-lg p-6 mb-4"
+      >
+        <h2 class="text-xl font-semibold mb-4">
+          Question {{ i + 1 }}: {{ question.question.text }}
+        </h2>
+        <div class="space-y-2">
+          <p><strong>Category:</strong> {{ question.category }}</p>
+          <p>
+            <strong>Difficulty:</strong>
+            <span
+              [ngClass]="{
+                'text-green-600': question.difficulty === 'easy',
+                'text-yellow-600': question.difficulty === 'medium',
+                'text-red-600': question.difficulty === 'hard'
+              }"
+            >
+              {{ question.difficulty }}
+            </span>
+          </p>
+          <p><strong>Correct Answer:</strong> {{ question.correctAnswer }}</p>
+          <div>
+            <strong>Incorrect Answers:</strong>
+            <ul class="list-disc list-inside ml-4">
+              <li *ngFor="let answer of question.incorrectAnswers">
+                {{ answer }}
+              </li>
+            </ul>
+          </div>
+          <p>
+            <strong>Tags:</strong>
+            <span
+              *ngFor="let tag of question.tags"
+              class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+            >
+              {{ tag }}
+            </span>
+          </p>
+          <p><strong>Type:</strong> {{ question.type }}</p>
+          <p>
+            <strong>Is Niche:</strong> {{ question.isNiche ? 'Yes' : 'No' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <div *ngIf="(quiz | async) === undefined" class="text-center text-gray-600">
+    Loading quiz...
+  </div>
+</div>

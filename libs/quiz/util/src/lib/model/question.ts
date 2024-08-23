@@ -5,7 +5,9 @@ export interface Question {
   id: string;
   correctAnswer: string;
   incorrectAnswers: string[];
-  question: string;
+  question: {
+    text: string;
+  };
   tags: string[];
   type: string;
   difficulty: string;
