@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { TriviaService } from '@ceri-web-app/quiz-data';
 import { Observable } from 'rxjs';
 import { Quiz } from '@ceri-web-app/quiz-util';
+
 @Component({
   selector: 'lib-quiz-feature',
   standalone: true,
@@ -15,9 +16,16 @@ export class QuizFeatureComponent {
   triviaService = inject(TriviaService);
 
   quiz?: Observable<Quiz>;
+  currentQuestionIndex = 0;
 
   getQuestions() {
     console.log(this.triviaService);
     this.quiz = this.triviaService.getTriviaQuestions();
+  }
+
+  goToNextQuestion() {
+    if (this.quiz) {
+      this.currentQuestionIndex++;
+    }
   }
 }

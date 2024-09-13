@@ -11,31 +11,45 @@
   <ng-container *ngIf="quiz | async as questions">
     <div class="space-y-6">
       <div
-        *ngFor="let question of questions; let i = index"
+        *ngIf="currentQuestionIndex < questions.length"
         class="bg-white shadow-md rounded-lg p-6 mb-4"
       >
         <h2 class="text-xl font-semibold mb-4">
-          Question {{ i + 1 }}: {{ question.question.text }}
+          Question {{ currentQuestionIndex + 1 }}:
+          {{ questions[currentQuestionIndex].question.text }}
         </h2>
         <div class="space-y-2">
-          <p><strong>Category:</strong> {{ question.category }}</p>
+          <p>
+            <strong>Category:</strong>
+            {{ questions[currentQuestionIndex].category }}
+          </p>
           <p>
             <strong>Difficulty:</strong>
             <span
               [ngClass]="{
-                'text-green-600': question.difficulty === 'easy',
-                'text-yellow-600': question.difficulty === 'medium',
-                'text-red-600': question.difficulty === 'hard'
+                'text-green-600':
+                  questions[currentQuestionIndex].difficulty === 'easy',
+                'text-yellow-600':
+                  questions[currentQuestionIndex].difficulty === 'medium',
+                'text-red-600':
+                  questions[currentQuestionIndex].difficulty === 'hard'
               }"
             >
-              {{ question.difficulty }}
+              {{ questions[currentQuestionIndex].difficulty }}
             </span>
           </p>
-          <p><strong>Correct Answer:</strong> {{ question.correctAnswer }}</p>
+          <p>
+            <strong>Correct Answer:</strong>
+            {{ questions[currentQuestionIndex].correctAnswer }}
+          </p>
           <div>
             <strong>Incorrect Answers:</strong>
             <ul class="list-disc list-inside ml-4">
-              <li *ngFor="let answer of question.incorrectAnswers">
+              <li
+                *ngFor="
+                  let answer of questions[currentQuestionIndex].incorrectAnswers
+                "
+              >
                 {{ answer }}
               </li>
             </ul>
@@ -43,17 +57,33 @@
           <p>
             <strong>Tags:</strong>
             <span
-              *ngFor="let tag of question.tags"
+              *ngFor="let tag of questions[currentQuestionIndex].tags"
               class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
             >
               {{ tag }}
             </span>
           </p>
-          <p><strong>Type:</strong> {{ question.type }}</p>
           <p>
-            <strong>Is Niche:</strong> {{ question.isNiche ? 'Yes' : 'No' }}
+            <strong>Type:</strong> {{ questions[currentQuestionIndex].type }}
+          </p>
+          <p>
+            <strong>Is Niche:</strong>
+            {{ questions[currentQuestionIndex].isNiche ? 'Yes' : 'No' }}
           </p>
         </div>
+        <button
+          class="btn btn-primary text-white mt-4"
+          (click)="goToNextQuestion()"
+        >
+          Next Question
+        </button>
+      </div>
+
+      <div
+        *ngIf="currentQuestionIndex >= questions.length"
+        class="text-center text-gray-600"
+      >
+        Quiz completed! Thank you for participating.
       </div>
     </div>
   </ng-container>
