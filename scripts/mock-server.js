@@ -20,7 +20,7 @@ apimock.processor.process({
 });
 
 app.use(apimock.middleware);
-app.use('/dev-interface', express.static(devInterface));
+app.use('/mocking', express.static(devInterface));
 
 app.listen(app.get('port'), () => {
   console.log('@ng-apimock/core running on port', app.get('port'));

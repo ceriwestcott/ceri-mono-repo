@@ -22,3 +22,8 @@ export enum AuthType {
   Login = 'login',
   Register = 'register',
 }
+
+export interface Token {
+  token: string;
+  ttl: number;
+}

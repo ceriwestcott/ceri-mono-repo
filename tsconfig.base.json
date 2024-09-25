@@ -17,13 +17,19 @@
     "paths": {
       "@ceri-web-app/auth": ["libs/shared/auth/src/index.ts"],
       "@ceri-web-app/core": ["libs/core/src/index.ts"],
+      "@ceri-web-app/data": ["libs/free-walking-tour/data/src/index.ts"],
+      "@ceri-web-app/feature": ["libs/free-walking-tour/feature/src/index.ts"],
       "@ceri-web-app/models": ["libs/shared/models/src/index.ts"],
       "@ceri-web-app/quiz-data": ["libs/quiz/data/src/index.ts"],
       "@ceri-web-app/quiz-feature": ["libs/quiz/feature/src/index.ts"],
       "@ceri-web-app/quiz-shell": ["libs/quiz/shell/src/index.ts"],
       "@ceri-web-app/quiz-ui": ["libs/quiz/ui/src/index.ts"],
       "@ceri-web-app/quiz-util": ["libs/quiz/util/src/index.ts"],
-      "@ceri-web-app/shared-ui": ["libs/shared/ui/src/index.ts"]
+      "@ceri-web-app/shared-ui": ["libs/shared/ui/src/index.ts"],
+      "@ceri-web-app/shared-util": ["libs/shared/util/src/index.ts"],
+      "@ceri-web-app/shell": ["libs/free-walking-tour/shell/src/index.ts"],
+      "@ceri-web-app/ui": ["libs/free-walking-tour/ui/src/index.ts"],
+      "@ceri-web-app/util": ["libs/free-walking-tour/util/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -6,9 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { API_URL } from '@ceri-web-app/core';
-import { AuthService } from '../../../../../models/src/lib/models/service/JwtToken.service';
 import { Login } from '@ceri-web-app/models';
+import { AuthService } from '@ceri-web-app/shared-util';
 @Component({
   selector: 'lib-login',
   standalone: true,
@@ -17,10 +16,7 @@ import { Login } from '@ceri-web-app/models';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(
-    @Inject(API_URL) private apiUrl: string,
-    private authService: AuthService
-  ) {}
+  constructor(private authService: AuthService) {}
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),

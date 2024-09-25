@@ -10,9 +10,10 @@ export const appRoutes: Route[] = [
     path: 'auth',
     loadChildren: () => import('@ceri-web-app/auth').then((m) => m.authRoutes),
   },
-  {
-    path: 'quiz',
-    loadChildren: () =>
-      import('@ceri-web-app/quiz-shell').then((m) => m.quizShellRoutes),
-  },
+  // {
+  //   path: 'quiz',
+  //   loadChildren: () =>
+  //     import('@ceri-web-app/quiz-shell').then((m) => m.quizShellRoutes),
+  //   canActivate: [AuthGuardService],
+  // },
 ];
