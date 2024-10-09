@@ -1,0 +1,99 @@
+<div class="bg-base-200 p-6 rounded-lg shadow-lg">
+  <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <ng-container *ngFor="let control of formStructure">
+        <!-- Text, Textarea & Number -->
+        <div *ngIf="['text', 'number', 'textarea'].includes(control.type)">
+          <label class="input input-bordered flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="w-4 h-4 opacity-70"
+            >
+              <path
+                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+              />
+            </svg>
+            <input
+              *ngIf="control.type !== 'textarea'"
+              [type]="control.type"
+              [formControlName]="control.name"
+              class="grow"
+              [placeholder]="control.label"
+            />
+            <textarea
+              *ngIf="control.type === 'textarea'"
+              [formControlName]="control.name"
+              class="grow"
+              [placeholder]="control.label"
+            ></textarea>
+          </label>
+          <div
+            *ngIf="
+              dynamicForm.controls[control.name]?.invalid &&
+              dynamicForm.controls[control.name]?.touched
+            "
+            class="text-error text-sm mt-1"
+          >
+            {{ getErrorMessage(control) }}
+          </div>
+        </div>
+
+        <!-- Radio Button -->
+        <div *ngIf="control.type === 'radio'">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">{{ control.label }}</span>
+            </label>
+            <div class="flex gap-4">
+              <label
+                *ngFor="let option of control.options"
+                class="label cursor-pointer"
+              >
+                <input
+                  type="radio"
+                  [formControlName]="control.name"
+                  [value]="option.value"
+                  class="radio checked:bg-primary"
+                />
+                <span class="label-text ml-2">{{ option.label }}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Select -->
+        <div *ngIf="control.type === 'select'">
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">{{ control.label }}</span>
+            </div>
+            <select
+              [formControlName]="control.name"
+              class="select select-bordered w-full"
+            >
+              <option disabled selected>-Select-</option>
+              <option
+                *ngFor="let option of control.options"
+                [value]="option.value"
+              >
+                {{ option.label }}
+              </option>
+            </select>
+          </label>
+          <div
+            *ngIf="
+              dynamicForm.controls[control.name]?.invalid &&
+              dynamicForm.controls[control.name]?.touched
+            "
+            class="text-error text-sm mt-1"
+          >
+            {{ getErrorMessage(control) }}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+  </form>
+</div>

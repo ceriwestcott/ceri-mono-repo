@@ -3,29 +3,28 @@ import { AsyncPipe, CommonModule, JsonPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TriviaService } from '@ceri-web-app/quiz-data';
 import { Observable } from 'rxjs';
-import { Quiz } from '@ceri-web-app/quiz-util';
+import { Question, Quiz } from '@ceri-web-app/quiz-util';
+import { QuizUiComponent } from '@ceri-web-app/quiz-ui';
 
 @Component({
   selector: 'lib-quiz-feature',
   standalone: true,
-  imports: [CommonModule, RouterModule, AsyncPipe, JsonPipe],
+  imports: [CommonModule, RouterModule, AsyncPipe, JsonPipe, QuizUiComponent],
   templateUrl: './quiz-feature.component.html',
   styleUrl: './quiz-feature.component.css',
 })
 export class QuizFeatureComponent {
-  triviaService = inject(TriviaService);
-
-  quiz?: Observable<Quiz>;
-  currentQuestionIndex = 0;
-
-  getQuestions() {
-    console.log(this.triviaService);
-    this.quiz = this.triviaService.getTriviaQuestions();
-  }
-
-  goToNextQuestion() {
-    if (this.quiz) {
-      this.currentQuestionIndex++;
-    }
+  question: Question = {
+    id: '0001',
+    category: 'geography',
+    question: {
+      text: 'What is the capital of wales?'
+    },
+    correctAnswer: 'cardiff',
+    incorrectAnswers: [
+      'Bristol',
+      'London',
+      'Belfast'
+    ]
   }
 }

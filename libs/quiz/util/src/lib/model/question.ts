@@ -8,9 +8,9 @@ export interface Question {
   question: {
     text: string;
   };
-  tags: string[];
-  type: string;
-  difficulty: string;
-  regions: any[];
-  isNiche: boolean;
+  tags?: string[];
+  type?: string;
+  difficulty?: string;
+  regions?: any[];
+  isNiche?: boolean;
 }

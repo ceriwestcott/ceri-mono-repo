@@ -1,1 +1,5 @@
-<p>quiz-ui works!</p>
+<div class="space-between my-8  select-none flex">
+  @for(answer of questionList; track answer){
+    <div class="px-4 py-2 bg-blue-500 text-white rounded-full cursor-pointer hover:bg-blue-600 transition-colors"> {{answer}}</div>
+    }
+</div>
