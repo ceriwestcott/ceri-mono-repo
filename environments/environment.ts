@@ -2,7 +2,6 @@ export const environment = {
   production: false,
   api: 'http://localhost:4210',
   firebase: {
-    apiKey: 'AIzaSyCmaAanXeeXNLbDVKFuT3XvEnutwD5nUk8',
     authDomain: 'auth-a1e1c.firebaseapp.com',
     projectId: 'auth-a1e1c',
     storageBucket: 'auth-a1e1c.appspot.com',
