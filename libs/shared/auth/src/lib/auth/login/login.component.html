@@ -1,65 +1,61 @@
-<div class="flex items-center justify-center min-h-screen">
+<div class="max-w-md mx-auto">
   <div class="w-full max-w-sm p-6 rounded-lg shadow-md">
-    <h2 class="mb-6 text-2xl font-bold text-center text-gray-300 uppercase">
-      Login
-    </h2>
 
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="mb-4">
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-200"
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
+      <h2 class="mb-6 text-2xl font-bold   uppercase">
+        Login
+      </h2>
+
+      <div class="space-y-4">
+        <div class="alert alert-error" *ngIf="error">{{ error }}</div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700"
           >Email</label
-        >
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-200"
-          placeholder="Enter your email"
-        />
-        <div
-          *ngIf="
-            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+          >
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="input input-bordered w-full max-w-md"
+          />
+          <p
+            *ngIf="
+            loginForm.get('email')?.invalid &&
+            loginForm.get('email')?.touched
           "
-          class="mt-2 text-sm text-red-600 font-bold"
-        >
-          <span *ngIf="loginForm.get('email')?.errors?.['required']"
-            >Email is required.</span
+            class="mt-2 text-sm text-red-600"
           >
-          <span *ngIf="loginForm.get('email')?.errors?.['email']"
-            >Enter a valid email.</span
-          >
+            Enter a valid email address
+          </p>
         </div>
-      </div>
 
-      <div class="mb-6">
-        <label
-          for="password"
-          class="block mb-2 text-sm font-medium text-gray-200"
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700"
           >Password</label
-        >
-        <input
-          type="password"
-          id="password"
-          formControlName="password"
-          class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 bg-gray-200 focus:ring-blue-500"
-          placeholder="Enter your password"
-        />
-        <div
-          *ngIf="
+          >
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="input input-bordered w-full max-w-md"
+          />
+          <p
+            *ngIf="
             loginForm.get('password')?.invalid &&
             loginForm.get('password')?.touched
           "
-          class="mt-2 text-sm text-red-600"
-        >
-          <span>Password is required.</span>
+            class="mt-2 text-sm text-red-600"
+          >
+            Password is required and must be at least 6 characters long
+          </p>
         </div>
       </div>
 
       <button
-        data-role="login-button"
         type="submit"
-        [disabled]="loginForm.invalid || loginForm.untouched"
-        class="btn w-full px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 disabled:bg-blue-400 disabled:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        [disabled]="loginForm.invalid"
+        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Login
       </button>

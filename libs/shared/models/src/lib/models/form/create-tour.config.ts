@@ -26,7 +26,8 @@ export const createTourConfig: IFormStructure[] = [
         validator: 'required',
       },
     ],
-  }, {
+  },
+  {
     type: 'number',
     label: 'Tour Price',
     name: 'tourPrice',
@@ -38,7 +39,8 @@ export const createTourConfig: IFormStructure[] = [
         validator: 'required',
       },
     ],
-  }, {
+  },
+  {
     type: 'text',
     label: 'Tour Duration',
     name: 'tourDuration',
@@ -50,7 +52,8 @@ export const createTourConfig: IFormStructure[] = [
         validator: 'required',
       },
     ],
-  }, {
+  },
+  {
     type: 'text',
     label: 'Tour Location',
     name: 'tourLocation',
@@ -62,7 +65,8 @@ export const createTourConfig: IFormStructure[] = [
         validator: 'required',
       },
     ],
-  }, {
+  },
+  {
     type: 'text',
     label: 'Tour Category',
     name: 'tourCategory',
@@ -74,5 +78,11 @@ export const createTourConfig: IFormStructure[] = [
         validator: 'required',
       },
     ],
-  }
+  },
+  {
+    type: 'checkbox',
+    label: 'Is Free',
+    name: 'isFree',
+    value: false,
+  },
 ];

@@ -1,72 +1,31 @@
+import { Injectable, inject } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { API_URL } from '@ceri-web-app/core';
-import {
-  BehaviorSubject,
-  catchError,
-  map,
-  Observable,
-  of,
-  shareReplay,
-  switchMap,
-} from 'rxjs';
-import { Login } from '@ceri-web-app/models';
-
+import { UserProfile } from '@ceri-web-app/models';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private http = inject(HttpClient);
-  private router = inject(Router);
-  apiUrl = inject(API_URL);
+  router = inject(Router);
+  afAuth = inject(AngularFireAuth);
+  afsService = inject(AngularFirestore);
 
-  private loginSubject = new BehaviorSubject<Login | null>(null);
-  private login$ = this.loginSubject.asObservable();
+  isLoggedIn$ = this.afAuth.authState.pipe(map((user) => !!user));
 
-  public isLoggedIn$ = this.login$.pipe(
-    switchMap((credentials) => {
-      if (!credentials) return of(false);
-      return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
-        map((response) => {
-          console.log('Logged in', response);
-          localStorage.setItem('token', response.token);
-          this.router.navigate(['/']);
-          return true;
-        }),
-        catchError((error) => {
-          console.error('Error logging in', error);
-          return of(false);
-        })
-      );
-    }),
-    shareReplay(1)
-  );
+  async createUserDocument() {
+    const user = await this.afAuth.currentUser;
 
-  public currentUser$ = this.isLoggedIn$.pipe(
-    switchMap((loggedIn) => {
-      if (!loggedIn) return of(null);
-      const userUuid = localStorage.getItem('token');
-      if (!userUuid) return of(null);
-      return this.http.get<any>(`${this.apiUrl}/getUserById`, {
-        params: {
-          userId: userUuid,
-        },
-      });
-    }),
-    shareReplay(1)
-  );
+    const userProfile: UserProfile = {
+      email: user?.email ?? '',
+      uid: user?.uid ?? '',
+      name: user?.displayName ?? '',
+      phone: '',
+      address: '',
+    };
 
-  login(user: Login): void {
-    this.loginSubject.next(user);
-  }
-
-  logout(): void {
-    localStorage.removeItem('token');
-    this.loginSubject.next(null);
-  }
-
-  isAuthenticated(): Observable<boolean> {
-    return this.isLoggedIn$;
+    return this.afsService.doc(`users/${user?.uid}`).set(userProfile);
+    //navigate to the profile page
   }
 }

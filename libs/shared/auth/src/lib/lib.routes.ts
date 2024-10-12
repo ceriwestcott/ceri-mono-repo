@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 export const authRoutes: Route[] = [
   {
@@ -10,5 +11,9 @@ export const authRoutes: Route[] = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'profile/:id',
+    component: ProfileComponent,
   },
 ];

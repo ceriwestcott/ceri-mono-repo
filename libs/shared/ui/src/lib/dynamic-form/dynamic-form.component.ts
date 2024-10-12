@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+
 @Component({
   selector: 'lib-dynamic-forms',
   standalone: true,
@@ -20,9 +21,13 @@ export class DynamicFormComponent implements OnInit {
   })
   formStructure: IFormStructure[] = [];
 
+  @Input({
+    required: true,
+  })
+  formTitle = '';
+
   @Output() formSubmit = new EventEmitter<any>();
   dynamicForm: FormGroup;
-
 
   constructor(private fb: FormBuilder) {
     this.dynamicForm = this.fb.group({});
@@ -35,7 +40,7 @@ export class DynamicFormComponent implements OnInit {
     }
 
     if (formControl.errors) {
-      const control = this.formStructure.find(c => c.name === controlName);
+      const control = this.formStructure.find((c) => c.name === controlName);
       if (control && Array.isArray(control.validators)) {
         for (const validation of control.validators) {
           if (formControl.hasError(validation.name)) {
@@ -53,6 +58,7 @@ export class DynamicFormComponent implements OnInit {
       this.dynamicForm.markAllAsTouched();
       return;
     }
+
     this.formSubmit.emit(this.dynamicForm.value);
   }
 
@@ -75,6 +81,12 @@ export class DynamicFormComponent implements OnInit {
               controlValidators.push(Validators.required);
             if (validation.validator === 'email')
               controlValidators.push(Validators.email);
+            if (validation.validator === 'minLength')
+              controlValidators.push(Validators.minLength(6));
+            if (validation.validator === 'maxLength')
+              controlValidators.push(Validators.maxLength(12));
+            if (validation.validator === 'pattern')
+              controlValidators.push(Validators.pattern(validation.message));
           }
         );
       }

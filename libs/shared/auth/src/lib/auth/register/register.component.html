@@ -1,1 +1,105 @@
-<p>register works!</p>
+<div class="max-w-md mx-auto">
+  <div class="w-full max-w-sm p-6 rounded-lg shadow-md">
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-4">
+      <h2 class="mb-6 text-2xl font-bold   uppercase">
+        Sign up
+      </h2>
+
+      <div class="space-y-4">
+        <div class="alert alert-error" *ngIf="error">{{ error }}</div>
+        <div>
+          <label for="firstName" class="block text-sm font-medium text-gray-700"
+          >First Name</label
+          >
+          <input
+            id="firstName"
+            type="text"
+            formControlName="firstName"
+            class="input input-bordered w-full max-w-md"
+          />
+          <p
+            *ngIf="
+            registerForm.get('firstName')?.invalid &&
+            registerForm.get('firstName')?.touched
+          "
+            class="mt-2 text-sm text-red-600"
+          >
+            First name is required
+          </p>
+        </div>
+
+        <div>
+          <label for="lastName" class="block text-sm font-medium text-gray-700"
+          >Last Name</label
+          >
+          <input
+            id="lastName"
+            type="text"
+            formControlName="lastName"
+            class="input input-bordered w-full max-w-md"
+          />
+          <p
+            *ngIf="
+            registerForm.get('lastName')?.invalid &&
+            registerForm.get('lastName')?.touched
+          "
+            class="mt-2 text-sm text-red-600"
+          >
+            Last name is required
+          </p>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700"
+          >Email</label
+          >
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="input input-bordered w-full max-w-md"
+          />
+          <p
+            *ngIf="
+            registerForm.get('email')?.invalid &&
+            registerForm.get('email')?.touched
+          "
+            class="mt-2 text-sm text-red-600"
+          >
+            Enter a valid email address
+          </p>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700"
+          >Password</label
+          >
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="input input-bordered w-full max-w-md"
+          />
+          <p
+            *ngIf="
+            registerForm.get('password')?.invalid &&
+            registerForm.get('password')?.touched
+          "
+            class="mt-2 text-sm text-red-600"
+          >
+            Password is required and must be at least 6 characters long
+          </p>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid"
+        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+</div>

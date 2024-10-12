@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'lib-shared-ui',
+  selector: 'lib-shared-create-tour',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './shared-ui.component.html',

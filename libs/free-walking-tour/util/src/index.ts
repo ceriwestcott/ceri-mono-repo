@@ -1,1 +1,1 @@
-export * from './lib/util/util.component';
+export { WalkingTour, WalkingTourMock } from './lib/models/walking-tour.models';

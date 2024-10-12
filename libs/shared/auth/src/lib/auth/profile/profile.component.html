@@ -1,0 +1,74 @@
+@if (userProfile$ | async; as userProfile) {
+
+<div class="max-w-md mx-auto">
+  <div class="w-full max-w-sm p-6 rounded-lg shadow-md">
+    <h2 class="mb-6 text-2xl font-bold uppercase">User Profile</h2>
+    <!-- Display user's name -->
+    <form [formGroup]="profileForm" (submit)="onSubmit()">
+      <div class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="input input-bordered w-full max-w-md"
+          />
+        </div>
+
+        <!-- Display user's email -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">
+            Email
+          </label>
+          <input
+            type="text"
+            id="name"
+            formControlName="email"
+            class="input input-bordered w-full max-w-md"
+          />
+        </div>
+
+        <!-- Display user's phone number -->
+        <div>
+          <label for="phone" class="block text-sm font-medium text-gray-700">
+            Phone
+          </label>
+          <input
+            type="text"
+            id="name"
+            formControlName="phone"
+            class="input input-bordered w-full max-w-md"
+          />
+        </div>
+
+        <!-- Display user's address -->
+        <div>
+          <label for="address" class="block text-sm font-medium text-gray-700">
+            Address
+          </label>
+          <input
+            type="text"
+            id="name"
+            formControlName="address"
+            class="input input-bordered w-full max-w-md"
+          />
+        </div>
+
+        <!-- Display user's UID -->
+
+        <!-- Edit button -->
+        <button
+          [disabled]="profileForm.invalid"
+          class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Edit Profile
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+}
