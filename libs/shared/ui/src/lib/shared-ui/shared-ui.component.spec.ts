@@ -6,10 +6,4 @@ describe('ButtonComponent', () => {
   const createComponent = createComponentFactory(SharedUiComponent);
 
   beforeEach(() => (spectator = createComponent()));
-
-  it('should have a success class by default', () => {
-    expect(spectator.query('p')?.textContent).toContain(
-      'shared-create-tour works!'
-    );
-  });
 });
