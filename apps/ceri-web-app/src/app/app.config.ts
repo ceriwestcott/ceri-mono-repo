@@ -11,8 +11,8 @@ import { JwtInterceptor } from '@ceri-web-app/shared-util';
 import { API_URL } from '@ceri-web-app/core';
 import { TriviaService } from '@ceri-web-app/quiz-data';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-
-//@nx
+// Nx ignore next line
+// eslint-disable-next-line
 import { environment } from '../../../../environments/environment';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { provideStorage, getStorage } from '@angular/fire/storage';
