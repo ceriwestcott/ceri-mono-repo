@@ -8,13 +8,13 @@ import {
 } from '@angular/forms';
 import { Login } from '@ceri-web-app/models';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AuthErrorService } from '@ceri-web-app/shared-util';
 
 @Component({
   selector: 'lib-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })

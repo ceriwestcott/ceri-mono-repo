@@ -44,8 +44,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.itemDoc = this.afsService.doc<UserProfile>(`users/${this.uid}`);
 
-    this.userProfile$ = this.itemDoc.valueChanges();
-
     this.userProfile$ = this.itemDoc.valueChanges().pipe(
       tap((userProfile) => {
         if (userProfile) {
