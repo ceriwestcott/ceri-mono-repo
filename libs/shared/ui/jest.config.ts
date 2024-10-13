@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'shared-ui',
+  displayName: 'shared-create-tour',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/libs/shared/ui',
+  coverageDirectory: '../../../coverage/libs/shared/create-tour',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

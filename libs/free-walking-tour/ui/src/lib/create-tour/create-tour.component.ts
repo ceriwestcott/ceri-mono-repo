@@ -4,18 +4,19 @@ import { DynamicFormComponent } from '@ceri-web-app/shared-ui';
 import { createTourConfig } from '@ceri-web-app/models';
 
 @Component({
-  selector: 'lib-ui',
+  selector: 'lib-create-tour',
   standalone: true,
   imports: [CommonModule, DynamicFormComponent],
-  templateUrl: './ui.component.html',
-  styleUrl: './ui.component.css',
+  templateUrl: './create-tour.component.html',
+  styleUrl: './create-tour.component.css',
 })
-export class UiComponent {
+export class CreateTourComponent {
   createTourConfig: any;
 
   constructor() {
     this.createTourConfig = createTourConfig;
   }
+
   formSubmission(event: any) {
     console.log(event);
   }

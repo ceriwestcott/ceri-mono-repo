@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'quiz-ui',
+  displayName: 'quiz-create-tour',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/libs/quiz/ui',
+  coverageDirectory: '../../../coverage/libs/quiz/create-tour',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

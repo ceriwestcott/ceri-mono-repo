@@ -10,13 +10,20 @@ import {
 import { JwtInterceptor } from '@ceri-web-app/shared-util';
 import { API_URL } from '@ceri-web-app/core';
 import { TriviaService } from '@ceri-web-app/quiz-data';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../../../../environments/environment';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
     provideHttpClient(withFetch()),
-
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
+    provideAuth(() => getAuth()),
     HttpClient,
     {
       provide: HTTP_INTERCEPTORS,
@@ -28,5 +35,6 @@ export const appConfig: ApplicationConfig = {
       provide: API_URL,
       useValue: 'http://localhost:4210',
     },
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
   ],
 };

@@ -1,1 +1,1 @@
-export * from './lib/feature/feature.component';
+export * from './lib/create-tour-layout/create-tour-layout.component';

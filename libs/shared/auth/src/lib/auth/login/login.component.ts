@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormControl,
@@ -7,31 +7,51 @@ import {
   Validators,
 } from '@angular/forms';
 import { Login } from '@ceri-web-app/models';
-import { AuthService } from '@ceri-web-app/shared-util';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { AuthErrorService } from '@ceri-web-app/shared-util';
+
 @Component({
   selector: 'lib-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(private authService: AuthService) {}
+  authService = inject(AngularFireAuth);
+  router = inject(Router);
+  activatedRoute = inject(ActivatedRoute);
+  authErrorService = inject(AuthErrorService);
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
   });
 
+  error = '';
+
   onSubmitClicked = false;
 
-  onSubmit() {
+  async onSubmit() {
     if (!this.loginForm.invalid) {
       const loginData: Login = {
         email: this.loginForm.value.email ?? '',
         password: this.loginForm.value.password ?? '',
       };
+      try {
+        const response = await this.authService.signInWithEmailAndPassword(
+          loginData.email,
+          loginData.password
+        );
 
-      this.authService.login(loginData);
+        const uid = response.user?.uid;
+        await this.router.navigate(['../profile', uid], {
+          relativeTo: this.activatedRoute,
+        });
+      } catch (error: string | any) {
+        this.error = this.authErrorService.getError(error);
+      }
     }
   }
 }

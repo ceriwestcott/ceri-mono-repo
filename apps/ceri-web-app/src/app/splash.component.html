@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CERI MONOREPO Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            'bounce-short': 'bounce 0.5s ease-in-out 2'
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body>
+<div class="container mx-auto p-8">
+  <header class="text-center mb-16">
+    <h1 class="text-5xl font-bold mb-4">CERI MONOREPO</h1>
+    <p class="text-xl opacity-75">Your Portfolio Dashboard</p>
+  </header>
+
+  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <!-- Pub Quiz -->
+    <div
+      class="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg hover:shadow-yellow-500/20">
+      <div class="flex justify-center mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             class="w-16 h-16 text-yellow-300 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3"
+             viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+        </svg>
+      </div>
+      <h2 class="text-2xl font-semibold mb-3 text-center">Pub Quiz</h2>
+      <p class="text-center mb-6 opacity-75">Test your knowledge</p>
+      <div class="text-center">
+        <a href="/quiz"
+           class="inline-block bg-yellow-300 text-gray-800 font-bold py-2 px-6 rounded-full hover:bg-yellow-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md">Launch</a>
+      </div>
+    </div>
+
+    <!-- FIFA League -->
+    <div
+      class="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg hover:shadow-green-500/20">
+      <div class="flex justify-center mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             class="w-16 h-16 text-green-300 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3"
+             viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+          <path d="M4 22h16" />
+          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+          <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+        </svg>
+      </div>
+      <h2 class="text-2xl font-semibold mb-3 text-center">FIFA League</h2>
+      <p class="text-center mb-6 opacity-75">Track your local FIFA league</p>
+      <div class="text-center">
+        <button
+          class="bg-green-300 text-gray-800 font-bold py-2 px-6 rounded-full hover:bg-green-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md">
+          Launch
+        </button>
+      </div>
+    </div>
+
+    <!-- Free Tour Guide -->
+    <div
+      class="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg hover:shadow-blue-500/20">
+      <div class="flex justify-center mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             class="w-16 h-16 text-blue-300 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3"
+             viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="10" r="3" />
+          <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
+        </svg>
+      </div>
+      <h2 class="text-2xl font-semibold mb-3 text-center">Free Tour Guide</h2>
+      <p class="text-center mb-6 opacity-75">Book or attend a free tour</p>
+      <div class="text-center">
+        <a href="/free-walking-tour"
+           class="inline-block bg-blue-300 text-gray-800 font-bold py-2 px-6 rounded-full hover:bg-blue-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md">Launch</a>
+      </div>
+    </div>
+
+    <!-- Community Hub -->
+    <div
+      class="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg hover:shadow-pink-500/20">
+      <div class="flex justify-center mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             class="w-16 h-16 text-pink-300 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3"
+             viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+      </div>
+      <h2 class="text-2xl font-semibold mb-3 text-center">Community Hub</h2>
+      <p class="text-center mb-6 opacity-75">Connect with others</p>
+      <div class="text-center">
+        <button
+          class="bg-pink-300 text-gray-800 font-bold py-2 px-6 rounded-full hover:bg-pink-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md">
+          Launch
+        </button>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

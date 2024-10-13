@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'ui',
+  displayName: 'create-tour',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/libs/free-walking-tour/ui',
+  coverageDirectory: '../../../coverage/libs/free-walking-tour/create-tour',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

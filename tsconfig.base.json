@@ -28,8 +28,10 @@
       "@ceri-web-app/shared-ui": ["libs/shared/ui/src/index.ts"],
       "@ceri-web-app/shared-util": ["libs/shared/util/src/index.ts"],
       "@ceri-web-app/shell": ["libs/free-walking-tour/shell/src/index.ts"],
-      "@ceri-web-app/ui": ["libs/free-walking-tour/ui/src/index.ts"],
-      "@ceri-web-app/util": ["libs/free-walking-tour/util/src/index.ts"]
+      "@ceri-web-app/util": ["libs/free-walking-tour/util/src/index.ts"],
+      "@ceri-web-app/walking-tour-ui": [
+        "libs/free-walking-tour/ui/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
